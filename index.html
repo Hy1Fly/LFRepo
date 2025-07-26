@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFRepo - 添加源</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --ios-bg: #f2f2f7;
+            --ios-card: rgba(255, 255, 255, 0.8);
+            --ios-primary: #007aff;
+            --ios-success: #34c759;
+            --ios-text: #1c1c1e;
+            --ios-secondary-text: #8e8e93;
+            --ios-border: rgba(0, 0, 0, 0.1);
+            --ios-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--ios-bg);
+            color: var(--ios-text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--ios-primary), #00a8ff);
+            border-radius: 22px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--ios-shadow);
+        }
+        
+        .logo i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--ios-text);
+        }
+        
+        header p {
+            color: var(--ios-secondary-text);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: var(--ios-card);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--ios-shadow);
+            border: 1px solid var(--ios-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--ios-border);
+        }
+        
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .siloe .app-icon { background: linear-gradient(135deg, #FF2D55, #FF375F); }
+        .saily .app-icon { background: linear-gradient(135deg, #5856D6, #7D7AFF); }
+        .cydia .app-icon { background: linear-gradient(135deg, #FF9500, #FF9F0A); }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        /* 步骤样式 */
+        .steps {
+            margin-bottom: 25px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            min-width: 28px;
+            height: 28px;
+            background: var(--ios-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        /* 源地址盒子 */
+        .source-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 122, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 25px 0;
+            border: 1px solid rgba(0, 122, 255, 0.2);
+        }
+        
+        .source-url {
+            flex: 1;
+            font-family: monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+            padding: 10px 0;
+            color: var(--ios-primary);
+        }
+        
+        .copy-btn {
+            background: var(--ios-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.2);
+        }
+        
+        .copy-btn:hover {
+            background: #0062cc;
+        }
+        
+        .copy-btn i {
+            margin-right: 8px;
+        }
+        
+        /* 页脚 */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--ios-secondary-text);
+            font-size: 0.9rem;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.2s; }
+        .card:nth-child(4) { animation-delay: 0.3s; }
+        
+        .copied-message {
+            background: var(--ios-success);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-left: 15px;
+            display: none;
+            animation: fadeInOut 1.5s ease;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; display: none; }
+            20%, 80% { opacity: 1; display: inline-block; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 10px 0;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+            
+            .source-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .copy-btn {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <h1>LFRepo</h1>
+            <p>在您的越狱设备上添加此源以获取精选的越狱插件和工具</p>
+        </header>
+        
+        <!-- 源地址卡片 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="app-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2>源地址</h2>
+            </div>
+            <div class="source-box">
+                <div class="source-url">https://hy1fly.github.io/LFRepo/</div>
+                <button class="copy-btn" id="copyBtn">
+                    <i class="fas fa-copy"></i> 复制源地址
+                </button>
+                <span class="copied-message" id="copiedMessage">已复制到剪贴板!</span>
+            </div>
+            <p style="color: var(--ios-secondary-text); font-size: 0.95rem;">
+                <i class="fas fa-info-circle"></i> 复制上方源地址，然后按照下方步骤添加到您的越狱商店
+            </p>
+        </div>
+        
+        <!-- Siloe 添加指南 -->
+        <div class="card siloe">
+            <div class="card-header">
+                <div class="app-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2>在 Siloe 中添加源</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">打开 Siloe 应用</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">点击右下角的"源"选项卡</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">点击右上角的"+"按钮</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">粘贴源地址并点击"添加源"</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Saily 添加指南 -->
+        <div class="card saily">
+            <div class="card-header">
+                <div class="app-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h2>在 Saily 中添加源</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">打开 Saily 应用</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">点击底部导航栏的"源"</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">点击右上角的"+"按钮</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">粘贴源地址并点击"确定"</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cydia 添加指南 -->
+        <div class="card cydia">
+            <div class="card-header">
+                <div class="app-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h2>在 Cydia 中添加源</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">打开 Cydia 应用</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">点击底部的"源"选项卡</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">点击右上角的"编辑"按钮</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">点击左上角的"添加"按钮</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">粘贴源地址并点击"添加源"</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 LFRepo | 由 hy1fly 维护</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyBtn = document.getElementById('copyBtn');
+            const copiedMessage = document.getElementById('copiedMessage');
+            const sourceUrl = 'https://hy1fly.github.io/LFRepo/';
+            
+            copyBtn.addEventListener('click', function() {
+                // 使用现代剪贴板API
+                navigator.clipboard.writeText(sourceUrl).then(() => {
+                    // 显示复制成功消息
+                    copiedMessage.style.display = 'inline-block';
+                    
+                    // 1.5秒后隐藏消息
+                    setTimeout(() => {
+                        copiedMessage.style.display = 'none';
+                    }, 1500);
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                    alert('复制失败，请手动复制源地址');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
