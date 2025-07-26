@@ -4,7 +4,7 @@ Version: 1.0
 Architecture: iphoneos-arm64
 Maintainer: LF
 Depends: firmware (>= 15.0), mobilesubstrate
-Filename: debs/LegacyPatcher.deb
+Filename: /debs/LegacyPatcher.deb
 Size: 95788
 MD5Sum: f08d43313461743e5d7f860b48655a4d
 SHA1: 3d3a652f027538f45a7f296b85feed0c8d1997d2
