@@ -1,10 +1,9 @@
 Package: LegacyPatcher
-NamePackage: LegacyPatcher
 Version: 1.0
 Architecture: iphoneos-arm64
 Maintainer: LF
 Depends: firmware (>= 15.0), mobilesubstrate
-Filename: ./LegacyPatcher.deb
+Filename: ./debs/LegacyPatcher.deb
 Size: 95788
 MD5sum: f08d43313461743e5d7f860b48655a4d
 SHA1: 3d3a652f027538f45a7f296b85feed0c8d1997d2
@@ -19,7 +18,7 @@ Version: 1.2
 Architecture: iphoneos-arm64
 Maintainer: LF
 Depends: firmware (>= 15.0), mobilesubstrate
-Filename: ./PlumpyBar.deb
+Filename: ./debs/PlumpyBar.deb
 Size: 70340
 MD5sum: b40aabb6829df8886da96f1856a6fcb2
 SHA1: 2e9bff2273515d8dc8fb1010f0e207f59c30fe4a
@@ -35,7 +34,7 @@ Architecture: iphoneos-arm64
 Maintainer: null
 Installed-Size: 236
 Depends: mobilesubstrate (>= 0.9.5000)
-Filename: ./DisCPULimited.deb
+Filename: ./debs/DisCPULimited.deb
 Size: 43476
 MD5sum: 34ec2d78b8544ae5346f03f76e8459fb
 SHA1: 8031cfade7409a3b4eac36cc8cd766d1a84c45e5
@@ -51,7 +50,7 @@ Architecture: iphoneos-arm64
 Maintainer: Netskao
 Installed-Size: 168
 Depends: mobilesubstrate (>= 0.9.5000)
-Filename: ./哔哩哔哩净化.deb
+Filename: ./debs/哔哩哔哩净化.deb
 Size: 6714020
 MD5sum: 3838928126ac208ef2c0c3e15fa4b2dc
 SHA1: 42cf7f3efce93fd598360915236203d403026f46
@@ -70,7 +69,7 @@ Depends: bzip2, darwintools, debianutils, dpkg (>= 1.19.1), gzip, sed, shell-cmd
 Conflicts: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, cydia-lproj, ispazio.net, modmyifone, ste, yellowsn0w.com, zodttd
 Replaces: bigboss, bigbossbetarepo, com.sosiphone.addcydia, cydia-sources, cydia-lproj, ispazio.net, modmyifone, saurik, ste, yellowsn0w.com, zodttd
 Provides: bigbossbetarepo, cydia-sources, cydia-lproj
-Filename: ./CydiaInstallerBeta.deb
+Filename: ./debs/CydiaInstallerBeta.deb
 Size: 1233652
 MD5sum: 0fede3e29a8a268bb2394330d0d6a1b7
 SHA1: b571164fa280011f83f5e932d9e071471256b835
@@ -87,7 +86,7 @@ Version: 1.2
 Architecture: iphoneos-arm64
 Maintainer: LF
 Depends: com.spark.snowboard
-Filename: ./iOS26e.deb
+Filename: ./debs/iOS26e.deb
 Size: 2223336
 MD5sum: 93574ce253ce800f96074ffdbb39dfbd
 SHA1: 72815fbc47098a690314512c33123255458076f1
@@ -102,7 +101,7 @@ Version: 1.0.8
 Architecture: iphoneos-arm64
 Maintainer: LF
 Depends: mobilesubstrate, preferenceloader, ws.hbang.common, xyz.cypwn.cephei-compat, xyz.cypwn.onboardingkitfix | firmware (<< 16.0), xyz.cypwn.xinam1ne
-Filename: ./LottieBar.deb
+Filename: ./debs/LottieBar.deb
 Size: 1013688
 MD5sum: 3a73c1f2907f60d4a51ab3e60b534f48
 SHA1: 7a77ad224ea5f1deac0a6714a5aee190cebd4a39
