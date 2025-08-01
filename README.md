@@ -1,12 +1,4 @@
 # LFRepo -- iOS Jailbreak Repo
-## Supports
-- RootlessJB
-- iOS15 ~ 16
-
-## What Tweaks are in it?
-- Themes
-- Tweaks
-- Systems...
-
-## Repo Address
-- hy1fly.github.io/LFRepo
+本仓库已转移至https://github.com/iOS-GM/LFRepo
+このリポジトリはhttps://github.com/iOS-GM/LFRepoに移転しました
+This warehouse has been transferred to https://github.com/iOS-GM/LFRepo
